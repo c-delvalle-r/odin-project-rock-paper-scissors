@@ -5,9 +5,21 @@ The computer picks one at random, the human picks one through a browser prompt. 
 number of wins each players has.
 */
 
+console.log(getComputerChoice())
+
 // The round BEGINS
 // The computer picks one option randomly
-
+function getComputerChoice() {
+    let choice = Math.floor(Math.random() * 3);
+    switch (choice) {
+        case 0: 
+            return 'rock';
+        case 1:
+            return 'paper';
+        case 2:
+            return 'scissors';
+    }
+}
 
 // The human gets prompted to input an option
 // The input gets validated
