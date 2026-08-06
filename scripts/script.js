@@ -5,7 +5,7 @@ The computer picks one at random, the human picks one through a browser prompt. 
 number of wins each players has.
 */
 
-console.log(getComputerChoice())
+console.log(getHumanChoice()); 
 
 // The round BEGINS
 // The computer picks one option randomly
@@ -22,7 +22,18 @@ function getComputerChoice() {
 }
 
 // The human gets prompted to input an option
-// The input gets validated
+function getHumanChoice() {
+    let choice = prompt('Choose: rock, paper or scissors');
+    return choice;
+}
+
+// The input gets validated ---- ASSUME A VALID INPUT FOR NOW
+
+
 // The winner is decided
+
+
 // The winner counter is incremented by one
-// You get the option to play another round
+
+
+// You get the option to play another round ----- ASSUME JUST ONE ROUND FOR NOW
