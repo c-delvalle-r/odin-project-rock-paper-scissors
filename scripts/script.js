@@ -5,6 +5,9 @@ The computer picks one at random, the human picks one through a browser prompt. 
 number of wins each players has.
 */
 
+let humanScore = 0;
+let computerScore = 0;
+
 console.log(getHumanChoice()); 
 
 // The round BEGINS
@@ -31,7 +34,35 @@ function getHumanChoice() {
 
 
 // The winner is decided
-
+function getWinner(humanChoice, computerChoice) {
+    if (humanChoice === 'rock') {
+        if (computerChoice === 'rock') {
+            return 'draw';
+        } else if (computerChoice === 'paper') {
+            return 'computer_wins';
+        } else {
+            return 'human_wins';
+        }
+    } else if (humanChoice === 'paper') {
+        if (computerChoice === 'rock') {
+            return 'human_wins';
+        } else if (computerChoice === 'paper') {
+            return 'draw';
+        } else {
+            return 'computer_wins';
+        }
+    } else if (humanChoice === 'scissors') {
+         if (computerChoice === 'rock') {
+            return 'computer_wins';
+        } else if (computerChoice === 'paper') {
+            return 'human_wins';
+        } else {
+            return 'draw';
+        }
+    } else {
+        return 'invalid_input';
+    }
+}
 
 // The winner counter is incremented by one
 
