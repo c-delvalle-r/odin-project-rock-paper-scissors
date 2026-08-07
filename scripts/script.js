@@ -33,7 +33,7 @@ function getComputerChoice() {
 
 // The human gets prompted to input an option
 function getHumanChoice() {
-    let choice = prompt('Choose: rock, paper or scissors');
+    let choice = prompt('Choose: rock, paper or scissors').toLowerCase();
     return choice;
 }
 
