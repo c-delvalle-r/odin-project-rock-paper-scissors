@@ -11,6 +11,13 @@ let computerScore = 0;
 console.log(getHumanChoice()); 
 
 // The round BEGINS
+function playRound() {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+    let winner = getWinner(humanChoice, computerChoice);
+    updateCounter(winner);
+}
+
 // The computer picks one option randomly
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -65,6 +72,12 @@ function getWinner(humanChoice, computerChoice) {
 }
 
 // The winner counter is incremented by one
-
+function updateCounter(winner) {
+    if (winner === 'human_wins') {
+        humanScore++;
+    } else if (winner === 'computer_wins') {
+        computerScore++;
+    }
+}
 
 // You get the option to play another round ----- ASSUME JUST ONE ROUND FOR NOW
