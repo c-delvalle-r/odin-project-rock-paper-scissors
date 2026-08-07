@@ -5,17 +5,14 @@ The computer picks one at random, the human picks one through a browser prompt. 
 number of wins each players has.
 */
 
-let humanScore = 0;
-let computerScore = 0;
-
-playRound();
+playGame();
 
 // The round BEGINS
-function playRound() {
+function playRound(humanScore, computerScore) {
     let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
     let winner = getWinner(humanChoice, computerChoice);
-    updateCounter(winner);
+    [humanScore, computerScore] = updateCounter(winner, humanScore, computerScore);
     if (winner === 'computer_wins') {
         console.log(`You lose! ${computerChoice} beats ${humanChoice} :(`);
     } else if (winner === 'human_wins') {
@@ -26,7 +23,7 @@ function playRound() {
         console.log('Draw, no harm done.');
     }
 
-    console.log(`Current score: Human ${humanScore} - ${computerScore} Computer`);
+    return [humanScore, computerScore]
 }
 
 // The computer picks one option randomly
@@ -83,12 +80,34 @@ function getWinner(humanChoice, computerChoice) {
 }
 
 // The winner counter is incremented by one
-function updateCounter(winner) {
+function updateCounter(winner, humanScore, computerScore) {
     if (winner === 'human_wins') {
         humanScore++;
     } else if (winner === 'computer_wins') {
         computerScore++;
     }
+    return [humanScore, computerScore];
 }
 
 // Logic to play 5 rounds before deciding a final winner
+function playGame(){
+    // let [humanScore, computerScore] = [0,0]
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for(let round = 1; round<=5; round++) {
+        console.log(`${6-round} rounds to go.`)
+        updatedScore = playRound(humanScore, computerScore);
+        humanScore = updatedScore[0];
+        computerScore = updatedScore[1];
+        console.log(`Current score: Human ${humanScore} - ${computerScore} Computer`);
+    }
+
+    if (humanScore > computerScore) {
+        console.log('HUMAN WINS!!!');
+    } else if (computerScore > humanScore) {
+        console.log('COMPUTER WINS! :(');
+    } else {
+        console.log('Tied.');
+    }
+}
