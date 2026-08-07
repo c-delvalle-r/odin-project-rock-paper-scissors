@@ -8,7 +8,7 @@ number of wins each players has.
 let humanScore = 0;
 let computerScore = 0;
 
-console.log(getHumanChoice()); 
+playRound();
 
 // The round BEGINS
 function playRound() {
@@ -16,6 +16,17 @@ function playRound() {
     let humanChoice = getHumanChoice();
     let winner = getWinner(humanChoice, computerChoice);
     updateCounter(winner);
+    if (winner === 'computer_wins') {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice} :(`);
+    } else if (winner === 'human_wins') {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    } else if (winner === 'invalid_input') {
+        console.log(`${humanChoice} is not a valid input.`);
+    } else {
+        console.log('Draw, no harm done.');
+    }
+
+    console.log(`Current score: Human ${humanScore} - ${computerScore} Computer`);
 }
 
 // The computer picks one option randomly
@@ -80,4 +91,4 @@ function updateCounter(winner) {
     }
 }
 
-// You get the option to play another round ----- ASSUME JUST ONE ROUND FOR NOW
+// Logic to play 5 rounds before deciding a final winner
